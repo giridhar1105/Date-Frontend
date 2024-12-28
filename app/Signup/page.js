@@ -99,7 +99,7 @@ export default function SignUp() {
                         <input
                             type="text"
                             placeholder="Username"
-                            className="w-full px-4 py-2 rounded-lg border border-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                            className="w-full px-4 py-2 text-black rounded-lg border border-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
                             onChange={(e) => setFormData({ ...formData, username: e.target.value })}
                             value={formData.username}
                         />
@@ -114,7 +114,7 @@ export default function SignUp() {
                         <input
                             type="email"
                             placeholder="Email"
-                            className="w-full px-4 py-2 rounded-lg border border-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                            className="w-full px-4 text-black py-2 rounded-lg border border-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
                             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                             value={formData.email}
                         />
@@ -129,7 +129,7 @@ export default function SignUp() {
                         <input
                             type="password"
                             placeholder="Password"
-                            className="w-full px-4 py-2 rounded-lg border border-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                            className="w-full px-4 text-black py-2 rounded-lg border border-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
                             onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                             value={formData.password}
                         />
@@ -144,7 +144,7 @@ export default function SignUp() {
                         <input
                             type="text"
                             placeholder="Place"
-                            className="w-full px-4 py-2 rounded-lg border border-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                            className="w-full px-4 py-2 text-black rounded-lg border border-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
                             onChange={(e) => setFormData({ ...formData, place: e.target.value })}
                             value={formData.place}
                         />
@@ -159,7 +159,7 @@ export default function SignUp() {
                         <input
                             type="number"
                             placeholder="Age"
-                            className="w-full px-4 py-2 rounded-lg border border-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                            className="w-full px-4 text-black py-2 rounded-lg border border-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
                             onChange={(e) => setFormData({ ...formData, age: e.target.value })}
                             value={formData.age}
                         />
@@ -172,7 +172,7 @@ export default function SignUp() {
                         className="mb-4"
                     >
                         <select
-                            className="w-full px-4 py-2 rounded-lg border border-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                            className="w-full text-black px-4 py-2 rounded-lg border border-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
                             onChange={(e) => setFormData({ ...formData, gender: e.target.value })}
                             value={formData.gender}
                         >
@@ -190,7 +190,7 @@ export default function SignUp() {
                         className="mb-6"
                     >
                         <select
-                            className="w-full px-4 py-2 rounded-lg border border-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                            className="w-full px-4 text-black py-2 rounded-lg border border-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
                             onChange={(e) => setFormData({ ...formData, interested: e.target.value })}
                             value={formData.interested}
                         >

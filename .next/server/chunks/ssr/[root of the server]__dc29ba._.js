@@ -142,7 +142,7 @@ function SignUp() {
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                 type: "text",
                                 placeholder: "Username",
-                                className: "w-full px-4 py-2 rounded-lg border border-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500",
+                                className: "w-full px-4 py-2 text-black rounded-lg border border-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500",
                                 onChange: (e)=>setFormData({
                                         ...formData,
                                         username: e.target.value
@@ -174,7 +174,7 @@ function SignUp() {
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                 type: "email",
                                 placeholder: "Email",
-                                className: "w-full px-4 py-2 rounded-lg border border-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500",
+                                className: "w-full px-4 text-black py-2 rounded-lg border border-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500",
                                 onChange: (e)=>setFormData({
                                         ...formData,
                                         email: e.target.value
@@ -206,7 +206,7 @@ function SignUp() {
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                 type: "password",
                                 placeholder: "Password",
-                                className: "w-full px-4 py-2 rounded-lg border border-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500",
+                                className: "w-full px-4 text-black py-2 rounded-lg border border-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500",
                                 onChange: (e)=>setFormData({
                                         ...formData,
                                         password: e.target.value
@@ -238,7 +238,7 @@ function SignUp() {
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                 type: "text",
                                 placeholder: "Place",
-                                className: "w-full px-4 py-2 rounded-lg border border-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500",
+                                className: "w-full px-4 py-2 text-black rounded-lg border border-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500",
                                 onChange: (e)=>setFormData({
                                         ...formData,
                                         place: e.target.value
@@ -270,7 +270,7 @@ function SignUp() {
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                 type: "number",
                                 placeholder: "Age",
-                                className: "w-full px-4 py-2 rounded-lg border border-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500",
+                                className: "w-full px-4 text-black py-2 rounded-lg border border-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500",
                                 onChange: (e)=>setFormData({
                                         ...formData,
                                         age: e.target.value
@@ -300,7 +300,7 @@ function SignUp() {
                             },
                             className: "mb-4",
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
-                                className: "w-full px-4 py-2 rounded-lg border border-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500",
+                                className: "w-full text-black px-4 py-2 rounded-lg border border-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500",
                                 onChange: (e)=>setFormData({
                                         ...formData,
                                         gender: e.target.value
@@ -364,7 +364,7 @@ function SignUp() {
                             },
                             className: "mb-6",
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
-                                className: "w-full px-4 py-2 rounded-lg border border-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500",
+                                className: "w-full px-4 text-black py-2 rounded-lg border border-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500",
                                 onChange: (e)=>setFormData({
                                         ...formData,
                                         interested: e.target.value
