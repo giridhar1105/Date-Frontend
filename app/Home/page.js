@@ -24,7 +24,6 @@ export default function Home() {
                 variants={staggerContainer}
                 className="pt-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto"
             >
-                {/* Hero Section */}
                 <motion.div 
                     variants={fadeInUp}
                     className="text-center text-white mt-20"
@@ -52,7 +51,6 @@ export default function Home() {
                     </motion.button>
                 </motion.div>
 
-                {/* Features Section */}
                 <motion.div 
                     variants={staggerContainer}
                     className="grid md:grid-cols-3 gap-8 mt-20"
@@ -81,7 +79,6 @@ export default function Home() {
                     ))}
                 </motion.div>
 
-                {/* Stats Section */}
                 <motion.div 
                     variants={fadeInUp}
                     className="mt-20 grid md:grid-cols-3 gap-8 text-white text-center"
