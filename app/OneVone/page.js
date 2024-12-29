@@ -1,4 +1,5 @@
 'use client';
+
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { io } from 'socket.io-client';
@@ -14,22 +15,18 @@ export default function OneVoneChat() {
     const messagesEndRef = useRef(null);
 
     useEffect(() => {
-        // Get current user from localStorage (set during signup/login)
         const userStr = localStorage.getItem('currentUser');
         if (userStr) {
             const user = JSON.parse(userStr);
             setCurrentUser(user);
             
-            // Initialize socket
             socketRef.current = io('http://localhost:5000');
             socketRef.current.emit('user-login', user.id);
 
-            // Listen for new messages
             socketRef.current.on('new-private-message', (message) => {
                 setMessages(prev => [...prev, message]);
             });
 
-            // Listen for user status changes
             socketRef.current.on('user-status-change', ({ userId, isOnline, lastSeen }) => {
                 setUsers(prev => prev.map(user => {
                     if (user.id === userId) {
@@ -39,7 +36,6 @@ export default function OneVoneChat() {
                 }));
             });
 
-            // Fetch users
             fetchUsers();
         }
 
@@ -48,7 +44,6 @@ export default function OneVoneChat() {
         };
     }, []);
 
-    // Auto-scroll to bottom when new messages arrive
     useEffect(() => {
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
     }, [messages]);
@@ -104,7 +99,6 @@ export default function OneVoneChat() {
         <div className="flex flex-col h-screen">
             <Header />
             <div className="flex flex-1 bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400">
-                {/* Left Sidebar - Users */}
                 <motion.div 
                     initial={{ x: -100, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
@@ -135,7 +129,6 @@ export default function OneVoneChat() {
                     </div>
                 </motion.div>
 
-                {/* Center - Active User Profile */}
                 <motion.div 
                     initial={{ y: -50, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
@@ -164,7 +157,6 @@ export default function OneVoneChat() {
                     )}
                 </motion.div>
 
-                {/* Right - Chat Area */}
                 <motion.div 
                     initial={{ x: 100, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
@@ -191,7 +183,6 @@ export default function OneVoneChat() {
                         <div ref={messagesEndRef} />
                     </div>
                     
-                    {/* Message Input Section */}
                     {activeUser && (
                         <form onSubmit={handleSendMessage} className="flex items-center space-x-2">
                             <input
