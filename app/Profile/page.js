@@ -139,23 +139,21 @@ import Header from '../Header/page';
 
 export default function ProfilePage() {
     const [isLoaded, setIsLoaded] = useState(false);
-    const [user, setUser] = useState(null); // Store the user data
+    const [user, setUser] = useState(null);
 
     useEffect(() => {
-        // Simulating an API call to fetch user data
         async function fetchUserData() {
             try {
-                const response = await fetch('http://localhost:5000/profile', { // Update the API endpoint to your actual profile endpoint
+                const response = await fetch('http://localhost:5000/profile', { 
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
-                        // Add authorization header if needed (e.g., JWT token)
                     },
                 });
 
                 if (response.ok) {
                     const data = await response.json();
-                    setUser(data.user); // Assuming the response returns a user object
+                    setUser(data.user); 
                 } else {
                     console.error('Error fetching user data');
                 }
@@ -167,7 +165,7 @@ export default function ProfilePage() {
         }
 
         fetchUserData();
-    }, []); // Empty dependency array ensures this only runs once when the component mounts
+    }, []); 
 
     if (!isLoaded) {
         return (
@@ -177,7 +175,6 @@ export default function ProfilePage() {
         );
     }
 
-    // If user data is not yet available or failed to fetch, show a placeholder
     if (!user) {
         return (
             <div className="error">
