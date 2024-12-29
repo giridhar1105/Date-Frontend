@@ -1,4 +1,5 @@
 // 'use client';
+
 // import { useState, useEffect } from 'react';
 // import Header from '../Header/page';
 
@@ -134,6 +135,7 @@
 
 
 'use client';
+
 import { useState, useEffect } from 'react';
 import Header from '../Header/page';
 
@@ -279,21 +281,21 @@ export default function ProfilePage() {
                         className="profile-image"
                     />
                     <div className="profile-info">
-                        <h1>{user.username || 'John Doe'}</h1>
+                        <h1>{user.username || 'Giridhar'}</h1>
                         <p className='text-black'>{user.place || 'Bengalore, Karnataka'}</p>
                         
                         <div className="stats">
                             <div className="stat-item" style={{ animationDelay: '0.2s' }}>
                                 <pre> Age: </pre>
-                                <p>{user.age || 'N/A'}</p>
+                                <p>{user.age || '20'}</p>
                             </div>
                             <div className="stat-item" style={{ animationDelay: '0.4s' }}>
                                 <h3>Gender: </h3>
-                                <p>{user.gender || 'N/A'}</p>
+                                <p>{user.gender || 'Male'}</p>
                             </div>
                             <div className="stat-item" style={{ animationDelay: '0.6s' }}>
                                 <h3>Interested In:</h3>
-                                <p>{user.interested || 'N/A'}</p>
+                                <p>{user.interested || 'Female'}</p>
                             </div>
                         </div>
                     </div>
