@@ -1,8 +1,4 @@
 {
-  "/page": "app/page.js",
-  "/Profile/page": "app/Profile/page.js",
-  "/AI/page": "app/AI/page.js",
-  "/Feedback/page": "app/Feedback/page.js",
-  "/Group/page": "app/Group/page.js",
+  "/Signup/page": "app/Signup/page.js",
   "/favicon.ico/route": "app/favicon.ico/route.js"
 }

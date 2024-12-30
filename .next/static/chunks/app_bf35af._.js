@@ -89,12 +89,12 @@ const Header = ()=>{
                             children: "Logo"
                         }, void 0, false, {
                             fileName: "[project]/app/Header/page.js",
-                            lineNumber: 44,
+                            lineNumber: 45,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/Header/page.js",
-                        lineNumber: 38,
+                        lineNumber: 39,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -128,18 +128,18 @@ const Header = ()=>{
                                                 }
                                             }, void 0, false, {
                                                 fileName: "[project]/app/Header/page.js",
-                                                lineNumber: 65,
+                                                lineNumber: 66,
                                                 columnNumber: 21
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/Header/page.js",
-                                        lineNumber: 58,
+                                        lineNumber: 59,
                                         columnNumber: 17
                                     }, this)
                                 }, index, false, {
                                     fileName: "[project]/app/Header/page.js",
-                                    lineNumber: 51,
+                                    lineNumber: 52,
                                     columnNumber: 15
                                 }, this)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -157,7 +157,7 @@ const Header = ()=>{
                                         children: "Login"
                                     }, void 0, false, {
                                         fileName: "[project]/app/Header/page.js",
-                                        lineNumber: 78,
+                                        lineNumber: 79,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].button, {
@@ -172,35 +172,35 @@ const Header = ()=>{
                                         children: "Sign Up"
                                     }, void 0, false, {
                                         fileName: "[project]/app/Header/page.js",
-                                        lineNumber: 87,
+                                        lineNumber: 88,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/Header/page.js",
-                                lineNumber: 77,
+                                lineNumber: 78,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/Header/page.js",
-                        lineNumber: 49,
+                        lineNumber: 50,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/Header/page.js",
-                lineNumber: 37,
+                lineNumber: 38,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/app/Header/page.js",
-            lineNumber: 36,
+            lineNumber: 37,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/app/Header/page.js",
-        lineNumber: 30,
+        lineNumber: 31,
         columnNumber: 5
     }, this);
 };
@@ -353,10 +353,9 @@ var _s = __turbopack_refresh__.signature();
 function ProfilePage() {
     _s();
     const [isLoaded, setIsLoaded] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
-    const [user, setUser] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null); // Store the user data
+    const [user, setUser] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "ProfilePage.useEffect": ()=>{
-            // Simulating an API call to fetch user data
             async function fetchUserData() {
                 try {
                     const response = await fetch('http://localhost:5000/profile', {
@@ -367,7 +366,7 @@ function ProfilePage() {
                     });
                     if (response.ok) {
                         const data = await response.json();
-                        setUser(data.user); // Assuming the response returns a user object
+                        setUser(data.user);
                     } else {
                         console.error('Error fetching user data');
                     }
@@ -379,7 +378,7 @@ function ProfilePage() {
             }
             fetchUserData();
         }
-    }["ProfilePage.useEffect"], []); // Empty dependency array ensures this only runs once when the component mounts
+    }["ProfilePage.useEffect"], []);
     if (!isLoaded) {
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             className: "loading",
@@ -396,7 +395,6 @@ function ProfilePage() {
             columnNumber: 13
         }, this);
     }
-    // If user data is not yet available or failed to fetch, show a placeholder
     if (!user) {
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             className: "error",
@@ -404,12 +402,12 @@ function ProfilePage() {
                 children: "User data could not be loaded."
             }, void 0, false, {
                 fileName: "[project]/app/Profile/page.js",
-                lineNumber: 184,
+                lineNumber: 183,
                 columnNumber: 17
             }, this)
         }, void 0, false, {
             fileName: "[project]/app/Profile/page.js",
-            lineNumber: 183,
+            lineNumber: 182,
             columnNumber: 13
         }, this);
     }
@@ -417,7 +415,7 @@ function ProfilePage() {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$Header$2f$page$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                 fileName: "[project]/app/Profile/page.js",
-                lineNumber: 191,
+                lineNumber: 190,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -436,7 +434,7 @@ function ProfilePage() {
                                 className: "jsx-f4a0296ca356b3dd" + " " + "profile-image"
                             }, void 0, false, {
                                 fileName: "[project]/app/Profile/page.js",
-                                lineNumber: 279,
+                                lineNumber: 278,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -444,10 +442,10 @@ function ProfilePage() {
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
                                         className: "jsx-f4a0296ca356b3dd",
-                                        children: user.username || 'John Doe'
+                                        children: user.username || 'Giridhar'
                                     }, void 0, false, {
                                         fileName: "[project]/app/Profile/page.js",
-                                        lineNumber: 285,
+                                        lineNumber: 284,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -455,7 +453,7 @@ function ProfilePage() {
                                         children: user.place || 'Bengalore, Karnataka'
                                     }, void 0, false, {
                                         fileName: "[project]/app/Profile/page.js",
-                                        lineNumber: 286,
+                                        lineNumber: 285,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -472,21 +470,21 @@ function ProfilePage() {
                                                         children: " Age: "
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/Profile/page.js",
-                                                        lineNumber: 290,
+                                                        lineNumber: 289,
                                                         columnNumber: 33
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                         className: "jsx-f4a0296ca356b3dd",
-                                                        children: user.age || 'N/A'
+                                                        children: user.age || '20'
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/Profile/page.js",
-                                                        lineNumber: 291,
+                                                        lineNumber: 290,
                                                         columnNumber: 33
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/Profile/page.js",
-                                                lineNumber: 289,
+                                                lineNumber: 288,
                                                 columnNumber: 29
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -500,21 +498,21 @@ function ProfilePage() {
                                                         children: "Gender: "
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/Profile/page.js",
-                                                        lineNumber: 294,
+                                                        lineNumber: 293,
                                                         columnNumber: 33
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                         className: "jsx-f4a0296ca356b3dd",
-                                                        children: user.gender || 'N/A'
+                                                        children: user.gender || 'Male'
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/Profile/page.js",
-                                                        lineNumber: 295,
+                                                        lineNumber: 294,
                                                         columnNumber: 33
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/Profile/page.js",
-                                                lineNumber: 293,
+                                                lineNumber: 292,
                                                 columnNumber: 29
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -528,51 +526,51 @@ function ProfilePage() {
                                                         children: "Interested In:"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/Profile/page.js",
-                                                        lineNumber: 298,
+                                                        lineNumber: 297,
                                                         columnNumber: 33
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                         className: "jsx-f4a0296ca356b3dd",
-                                                        children: user.interested || 'N/A'
+                                                        children: user.interested || 'Female'
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/Profile/page.js",
-                                                        lineNumber: 299,
+                                                        lineNumber: 298,
                                                         columnNumber: 33
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/Profile/page.js",
-                                                lineNumber: 297,
+                                                lineNumber: 296,
                                                 columnNumber: 29
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/Profile/page.js",
-                                        lineNumber: 288,
+                                        lineNumber: 287,
                                         columnNumber: 25
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/Profile/page.js",
-                                lineNumber: 284,
+                                lineNumber: 283,
                                 columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/Profile/page.js",
-                        lineNumber: 278,
+                        lineNumber: 277,
                         columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/Profile/page.js",
-                lineNumber: 192,
+                lineNumber: 191,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/Profile/page.js",
-        lineNumber: 190,
+        lineNumber: 189,
         columnNumber: 9
     }, this);
 }
