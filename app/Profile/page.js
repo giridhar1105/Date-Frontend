@@ -172,7 +172,7 @@ export default function ProfilePage() {
     if (!isLoaded) {
         return (
             <div className="loading">
-                <p>Loading...</p>
+                <p>Signup Please</p>
             </div>
         );
     }
@@ -287,15 +287,15 @@ export default function ProfilePage() {
                         <div className="stats">
                             <div className="stat-item" style={{ animationDelay: '0.2s' }}>
                                 <pre> Age: </pre>
-                                <p>{user.age || '20'}</p>
+                                <p>{users.age || '20'}</p>
                             </div>
                             <div className="stat-item" style={{ animationDelay: '0.4s' }}>
                                 <h3>Gender: </h3>
-                                <p>{user.gender || 'Male'}</p>
+                                <p>{users.gender || 'Male'}</p>
                             </div>
                             <div className="stat-item" style={{ animationDelay: '0.6s' }}>
                                 <h3>Interested In:</h3>
-                                <p>{user.interested || 'Female'}</p>
+                                <p>{users.interested || 'Female'}</p>
                             </div>
                         </div>
                     </div>

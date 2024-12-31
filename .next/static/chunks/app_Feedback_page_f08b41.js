@@ -47,7 +47,7 @@ function FeedbackPage() {
                     children: "Give us your Feedback"
                 }, void 0, false, {
                     fileName: "[project]/app/Feedback/page.js",
-                    lineNumber: 18,
+                    lineNumber: 19,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -72,7 +72,7 @@ function FeedbackPage() {
                                     onClick: ()=>setRating(currentRating)
                                 }, void 0, false, {
                                     fileName: "[project]/app/Feedback/page.js",
-                                    lineNumber: 35,
+                                    lineNumber: 36,
                                     columnNumber: 33
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FaStar"], {
@@ -83,19 +83,19 @@ function FeedbackPage() {
                                     onMouseLeave: ()=>setHover(null)
                                 }, void 0, false, {
                                     fileName: "[project]/app/Feedback/page.js",
-                                    lineNumber: 42,
+                                    lineNumber: 43,
                                     columnNumber: 33
                                 }, this)
                             ]
                         }, index, true, {
                             fileName: "[project]/app/Feedback/page.js",
-                            lineNumber: 30,
+                            lineNumber: 31,
                             columnNumber: 29
                         }, this);
                     })
                 }, void 0, false, {
                     fileName: "[project]/app/Feedback/page.js",
-                    lineNumber: 26,
+                    lineNumber: 27,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].textarea, {
@@ -117,7 +117,7 @@ function FeedbackPage() {
                     onChange: (e)=>setFeedback(e.target.value)
                 }, void 0, false, {
                     fileName: "[project]/app/Feedback/page.js",
-                    lineNumber: 54,
+                    lineNumber: 55,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].button, {
@@ -131,18 +131,18 @@ function FeedbackPage() {
                     children: "Submit Feedback"
                 }, void 0, false, {
                     fileName: "[project]/app/Feedback/page.js",
-                    lineNumber: 65,
+                    lineNumber: 66,
                     columnNumber: 17
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/app/Feedback/page.js",
-            lineNumber: 13,
+            lineNumber: 14,
             columnNumber: 13
         }, this)
     }, void 0, false, {
         fileName: "[project]/app/Feedback/page.js",
-        lineNumber: 12,
+        lineNumber: 13,
         columnNumber: 9
     }, this);
 }

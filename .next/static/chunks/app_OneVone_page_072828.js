@@ -5,8 +5,8 @@
 (globalThis.TURBOPACK_CHUNK_LISTS = globalThis.TURBOPACK_CHUNK_LISTS || []).push({
   "path": "static/chunks/app_OneVone_page_072828.js",
   "chunks": [
-    "static/chunks/node_modules_d51db8._.js",
-    "static/chunks/app_OneVone_page_60eb02.js"
+    "static/chunks/node_modules_198062._.js",
+    "static/chunks/app_ba6909._.js"
   ],
   "source": "dynamic"
 });

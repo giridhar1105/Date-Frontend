@@ -21,7 +21,6 @@ export default function AIChat() {
         if (input.trim()) {
             setMessages([...messages, { text: input, type: 'user' }]);
 
-            // Make request to backend API
             try {
                 const timestamp = new Date().toISOString();
                 const response = await fetch('http://localhost:5000/gemini-1.5-flash', {
