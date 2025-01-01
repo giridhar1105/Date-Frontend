@@ -27,6 +27,7 @@ function SignUp() {
     const [formData, setFormData] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])({
         username: '',
         email: '',
+        otp: '',
         password: '',
         place: '',
         age: '',
@@ -40,8 +41,20 @@ function SignUp() {
         e.preventDefault();
         setError(null);
         setSuccess(null);
-        if (!formData.username || !formData.email || !formData.password || !formData.place || !formData.age || !formData.gender || !formData.interested) {
+        // Validate required fields
+        if (!formData.username || !formData.email || !formData.otp || !formData.password || !formData.place || !formData.age || !formData.gender || !formData.interested) {
             setError('All fields are required');
+            return;
+        }
+        // Simple email validation (can be expanded for stricter validation)
+        const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (!emailPattern.test(formData.email)) {
+            setError('Please enter a valid email address');
+            return;
+        }
+        // Simple age validation
+        if (isNaN(formData.age) || formData.age < 18) {
+            setError('Age must be a valid number and at least 18');
             return;
         }
         setLoading(true);
@@ -59,6 +72,7 @@ function SignUp() {
                 setFormData({
                     username: '',
                     email: '',
+                    otp: '',
                     password: '',
                     place: '',
                     age: '',
@@ -104,7 +118,7 @@ function SignUp() {
                     children: "Sign Up"
                 }, void 0, false, {
                     fileName: "[project]/app/Signup/page.js",
-                    lineNumber: 76,
+                    lineNumber: 92,
                     columnNumber: 17
                 }, this),
                 error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -112,7 +126,7 @@ function SignUp() {
                     children: error
                 }, void 0, false, {
                     fileName: "[project]/app/Signup/page.js",
-                    lineNumber: 86,
+                    lineNumber: 102,
                     columnNumber: 21
                 }, this),
                 success && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -120,7 +134,7 @@ function SignUp() {
                     children: success
                 }, void 0, false, {
                     fileName: "[project]/app/Signup/page.js",
-                    lineNumber: 90,
+                    lineNumber: 106,
                     columnNumber: 21
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
@@ -150,12 +164,12 @@ function SignUp() {
                                 value: formData.username
                             }, void 0, false, {
                                 fileName: "[project]/app/Signup/page.js",
-                                lineNumber: 100,
+                                lineNumber: 117,
                                 columnNumber: 25
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/app/Signup/page.js",
-                            lineNumber: 94,
+                            lineNumber: 111,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
@@ -182,12 +196,12 @@ function SignUp() {
                                 value: formData.email
                             }, void 0, false, {
                                 fileName: "[project]/app/Signup/page.js",
-                                lineNumber: 115,
+                                lineNumber: 133,
                                 columnNumber: 25
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/app/Signup/page.js",
-                            lineNumber: 109,
+                            lineNumber: 127,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
@@ -204,22 +218,22 @@ function SignUp() {
                             },
                             className: "mb-4",
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                type: "password",
-                                placeholder: "Password",
+                                type: "number",
+                                placeholder: "OTP",
                                 className: "w-full px-4 text-black py-2 rounded-lg border border-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500",
                                 onChange: (e)=>setFormData({
                                         ...formData,
-                                        password: e.target.value
+                                        otp: e.target.value
                                     }),
-                                value: formData.password
+                                value: formData.otp
                             }, void 0, false, {
                                 fileName: "[project]/app/Signup/page.js",
-                                lineNumber: 130,
+                                lineNumber: 149,
                                 columnNumber: 25
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/app/Signup/page.js",
-                            lineNumber: 124,
+                            lineNumber: 143,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
@@ -236,22 +250,22 @@ function SignUp() {
                             },
                             className: "mb-4",
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                type: "text",
-                                placeholder: "Place",
-                                className: "w-full px-4 py-2 text-black rounded-lg border border-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500",
+                                type: "password",
+                                placeholder: "Password",
+                                className: "w-full px-4 text-black py-2 rounded-lg border border-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500",
                                 onChange: (e)=>setFormData({
                                         ...formData,
-                                        place: e.target.value
+                                        password: e.target.value
                                     }),
-                                value: formData.place
+                                value: formData.password
                             }, void 0, false, {
                                 fileName: "[project]/app/Signup/page.js",
-                                lineNumber: 145,
+                                lineNumber: 165,
                                 columnNumber: 25
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/app/Signup/page.js",
-                            lineNumber: 139,
+                            lineNumber: 159,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
@@ -268,22 +282,22 @@ function SignUp() {
                             },
                             className: "mb-4",
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                type: "number",
-                                placeholder: "Age",
-                                className: "w-full px-4 text-black py-2 rounded-lg border border-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500",
+                                type: "text",
+                                placeholder: "Place",
+                                className: "w-full px-4 py-2 text-black rounded-lg border border-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500",
                                 onChange: (e)=>setFormData({
                                         ...formData,
-                                        age: e.target.value
+                                        place: e.target.value
                                     }),
-                                value: formData.age
+                                value: formData.place
                             }, void 0, false, {
                                 fileName: "[project]/app/Signup/page.js",
-                                lineNumber: 160,
+                                lineNumber: 181,
                                 columnNumber: 25
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/app/Signup/page.js",
-                            lineNumber: 154,
+                            lineNumber: 175,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
@@ -299,55 +313,23 @@ function SignUp() {
                                 delay: 0.9
                             },
                             className: "mb-4",
-                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
-                                className: "w-full text-black px-4 py-2 rounded-lg border border-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500",
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                type: "number",
+                                placeholder: "Age",
+                                className: "w-full px-4 text-black py-2 rounded-lg border border-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500",
                                 onChange: (e)=>setFormData({
                                         ...formData,
-                                        gender: e.target.value
+                                        age: e.target.value
                                     }),
-                                value: formData.gender,
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
-                                        value: "",
-                                        children: "Select Gender"
-                                    }, void 0, false, {
-                                        fileName: "[project]/app/Signup/page.js",
-                                        lineNumber: 180,
-                                        columnNumber: 29
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
-                                        value: "male",
-                                        children: "Male"
-                                    }, void 0, false, {
-                                        fileName: "[project]/app/Signup/page.js",
-                                        lineNumber: 181,
-                                        columnNumber: 29
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
-                                        value: "female",
-                                        children: "Female"
-                                    }, void 0, false, {
-                                        fileName: "[project]/app/Signup/page.js",
-                                        lineNumber: 182,
-                                        columnNumber: 29
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
-                                        value: "other",
-                                        children: "Other"
-                                    }, void 0, false, {
-                                        fileName: "[project]/app/Signup/page.js",
-                                        lineNumber: 183,
-                                        columnNumber: 29
-                                    }, this)
-                                ]
-                            }, void 0, true, {
+                                value: formData.age
+                            }, void 0, false, {
                                 fileName: "[project]/app/Signup/page.js",
-                                lineNumber: 175,
+                                lineNumber: 197,
                                 columnNumber: 25
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/app/Signup/page.js",
-                            lineNumber: 169,
+                            lineNumber: 191,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
@@ -361,6 +343,70 @@ function SignUp() {
                             },
                             transition: {
                                 delay: 1.0
+                            },
+                            className: "mb-4",
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
+                                className: "w-full text-black px-4 py-2 rounded-lg border border-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500",
+                                onChange: (e)=>setFormData({
+                                        ...formData,
+                                        gender: e.target.value
+                                    }),
+                                value: formData.gender,
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                        value: "",
+                                        children: "Select Gender"
+                                    }, void 0, false, {
+                                        fileName: "[project]/app/Signup/page.js",
+                                        lineNumber: 218,
+                                        columnNumber: 29
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                        value: "male",
+                                        children: "Male"
+                                    }, void 0, false, {
+                                        fileName: "[project]/app/Signup/page.js",
+                                        lineNumber: 219,
+                                        columnNumber: 29
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                        value: "female",
+                                        children: "Female"
+                                    }, void 0, false, {
+                                        fileName: "[project]/app/Signup/page.js",
+                                        lineNumber: 220,
+                                        columnNumber: 29
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                        value: "other",
+                                        children: "Other"
+                                    }, void 0, false, {
+                                        fileName: "[project]/app/Signup/page.js",
+                                        lineNumber: 221,
+                                        columnNumber: 29
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/app/Signup/page.js",
+                                lineNumber: 213,
+                                columnNumber: 25
+                            }, this)
+                        }, void 0, false, {
+                            fileName: "[project]/app/Signup/page.js",
+                            lineNumber: 207,
+                            columnNumber: 21
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
+                            initial: {
+                                x: -100,
+                                opacity: 0
+                            },
+                            animate: {
+                                x: 0,
+                                opacity: 1
+                            },
+                            transition: {
+                                delay: 1.1
                             },
                             className: "mb-6",
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
@@ -376,7 +422,7 @@ function SignUp() {
                                         children: "Interested In"
                                     }, void 0, false, {
                                         fileName: "[project]/app/Signup/page.js",
-                                        lineNumber: 198,
+                                        lineNumber: 237,
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -384,7 +430,7 @@ function SignUp() {
                                         children: "Men"
                                     }, void 0, false, {
                                         fileName: "[project]/app/Signup/page.js",
-                                        lineNumber: 199,
+                                        lineNumber: 238,
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -392,7 +438,7 @@ function SignUp() {
                                         children: "Women"
                                     }, void 0, false, {
                                         fileName: "[project]/app/Signup/page.js",
-                                        lineNumber: 200,
+                                        lineNumber: 239,
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -400,18 +446,18 @@ function SignUp() {
                                         children: "Both"
                                     }, void 0, false, {
                                         fileName: "[project]/app/Signup/page.js",
-                                        lineNumber: 201,
+                                        lineNumber: 240,
                                         columnNumber: 29
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/Signup/page.js",
-                                lineNumber: 193,
+                                lineNumber: 232,
                                 columnNumber: 25
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/app/Signup/page.js",
-                            lineNumber: 187,
+                            lineNumber: 226,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].button, {
@@ -427,24 +473,24 @@ function SignUp() {
                             children: loading ? 'Creating Account...' : 'Create Account'
                         }, void 0, false, {
                             fileName: "[project]/app/Signup/page.js",
-                            lineNumber: 205,
+                            lineNumber: 245,
                             columnNumber: 21
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/Signup/page.js",
-                    lineNumber: 93,
+                    lineNumber: 109,
                     columnNumber: 17
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/app/Signup/page.js",
-            lineNumber: 70,
+            lineNumber: 86,
             columnNumber: 13
         }, this)
     }, void 0, false, {
         fileName: "[project]/app/Signup/page.js",
-        lineNumber: 69,
+        lineNumber: 85,
         columnNumber: 9
     }, this);
 }

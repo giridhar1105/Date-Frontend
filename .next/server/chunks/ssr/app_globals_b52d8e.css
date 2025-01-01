@@ -378,6 +378,10 @@ img, video {
   margin-top: 1.5rem;
 }
 
+.mt-2 {
+  margin-top: .5rem;
+}
+
 .block {
   display: block;
 }
