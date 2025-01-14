@@ -10,13 +10,13 @@ export default function ProfilePage() {
   useEffect(() => {
     const storedUserData = localStorage.getItem('userData');
     if (storedUserData) {
-      setUserData(JSON.parse(storedUserData)); // Parse the stored data
+      setUserData(JSON.parse(storedUserData));
     }
     setIsLoaded(true);
   }, []);
 
   if (!userData) {
-    return <p>Loading...</p>; // Optional: Show loading state while user data is fetched
+    return <p>Loading...</p>;
   }
 
   return (

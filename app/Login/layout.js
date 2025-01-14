@@ -4,8 +4,8 @@ import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "MachaLang AboutUs",
-  description: "Kannada's its own coding language",
+  title: "Login",
+  description: "Login",
 };
 
 export default function RootLayout({ children }) {

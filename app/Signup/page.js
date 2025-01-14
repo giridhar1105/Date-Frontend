@@ -27,7 +27,6 @@ export default function SignUp() {
     setError(null);
     setSuccess(null);
 
-    // Form validation
     if (
       !formData.username ||
       !formData.email ||
@@ -80,11 +79,10 @@ export default function SignUp() {
           interested: '',
         });
 
-        // Store user data in localStorage
         localStorage.setItem('userData', JSON.stringify(formData));
 
         window.alert('Signup successful! Enjoy your journey with us!');
-        router.push('/'); // Redirect to the profile page
+        router.push('/');
       } else {
         setError(data.message);
       }

@@ -30,14 +30,11 @@ export default function Login() {
             const data = await response.json();
 
             if (response.ok) {
-                // Store the JWT token and user data in localStorage
-                localStorage.setItem('token', data.token); // Store the token
-                localStorage.setItem('currentUser', JSON.stringify(data.user)); // Store user data
+                localStorage.setItem('token', data.token);
+                localStorage.setItem('currentUser', JSON.stringify(data.user)); 
 
-                // Redirect to the chat/dashboard page or any other protected page
                 router.push('/');
             } else {
-                // Display error if login fails
                 setError(data.message);
             }
         } catch (err) {
