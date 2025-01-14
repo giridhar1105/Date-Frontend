@@ -338,10 +338,6 @@ img, video {
   margin-right: auto;
 }
 
-.mb-1 {
-  margin-bottom: .25rem;
-}
-
 .mb-2 {
   margin-bottom: .5rem;
 }
@@ -366,6 +362,10 @@ img, video {
   margin-left: auto;
 }
 
+.mt-2 {
+  margin-top: .5rem;
+}
+
 .mt-20 {
   margin-top: 5rem;
 }
@@ -376,10 +376,6 @@ img, video {
 
 .mt-6 {
   margin-top: 1.5rem;
-}
-
-.mt-2 {
-  margin-top: .5rem;
 }
 
 .block {
@@ -402,6 +398,10 @@ img, video {
   height: .125rem;
 }
 
+.h-10 {
+  height: 2.5rem;
+}
+
 .h-12 {
   height: 3rem;
 }
@@ -418,12 +418,12 @@ img, video {
   height: 8rem;
 }
 
-.h-8 {
-  height: 2rem;
-}
-
 .h-\[600px\] {
   height: 600px;
+}
+
+.h-full {
+  height: 100%;
 }
 
 .h-screen {
@@ -436,6 +436,10 @@ img, video {
 
 .w-1\/4 {
   width: 25%;
+}
+
+.w-10 {
+  width: 2.5rem;
 }
 
 .w-12 {
@@ -452,10 +456,6 @@ img, video {
 
 .w-32 {
   width: 8rem;
-}
-
-.w-8 {
-  width: 2rem;
 }
 
 .w-96 {
@@ -476,6 +476,10 @@ img, video {
 
 .max-w-\[70\%\] {
   max-width: 70%;
+}
+
+.max-w-\[75\%\] {
+  max-width: 75%;
 }
 
 .max-w-\[80\%\] {
@@ -532,6 +536,10 @@ img, video {
 
 .gap-2 {
   gap: .5rem;
+}
+
+.gap-3 {
+  gap: .75rem;
 }
 
 .gap-8 {
@@ -647,11 +655,6 @@ img, video {
 
 .border-white\/20 {
   border-color: #fff3;
-}
-
-.bg-gray-100 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(243 244 246 / var(--tw-bg-opacity, 1));
 }
 
 .bg-gray-200 {
@@ -938,6 +941,12 @@ img, video {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
+.shadow-md {
+  --tw-shadow: 0 4px 6px -1px #0000001a, 0 2px 4px -2px #0000001a;
+  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
 .shadow-xl {
   --tw-shadow: 0 20px 25px -5px #0000001a, 0 8px 10px -6px #0000001a;
   --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
@@ -1104,6 +1113,18 @@ body {
 }
 
 @media (width >= 640px) {
+  .sm\:w-auto {
+    width: auto;
+  }
+
+  .sm\:flex-row {
+    flex-direction: row;
+  }
+
+  .sm\:gap-5 {
+    gap: 1.25rem;
+  }
+
   .sm\:px-6 {
     padding-left: 1.5rem;
     padding-right: 1.5rem;

@@ -230,6 +230,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$socket$2e$io$2d$client$2f$build$2f$esm$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$module__evaluation$3e$__ = __turbopack_import__("[project]/node_modules/socket.io-client/build/esm/index.js [app-client] (ecmascript) <module evaluation>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$Header$2f$page$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/app/Header/page.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$socket$2e$io$2d$client$2f$build$2f$esm$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__ = __turbopack_import__("[project]/node_modules/socket.io-client/build/esm/index.js [app-client] (ecmascript) <locals>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/axios/lib/axios.js [app-client] (ecmascript)"); // For making HTTP requests
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/framer-motion/dist/es/render/components/motion/proxy.mjs [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$components$2f$AnimatePresence$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/framer-motion/dist/es/components/AnimatePresence/index.mjs [app-client] (ecmascript)");
 ;
@@ -239,73 +240,91 @@ var _s = __turbopack_refresh__.signature();
 ;
 ;
 ;
+;
 function GroupChat() {
     _s();
     const [messages, setMessages] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
     const [newMessage, setNewMessage] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])('');
     const [onlineCount, setOnlineCount] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(0);
+    const [token, setToken] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null); // For storing JWT token
     const socketRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
     const messagesEndRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "GroupChat.useEffect": ()=>{
-            socketRef.current = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$socket$2e$io$2d$client$2f$build$2f$esm$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["io"])('http://localhost:5000');
-            socketRef.current.emit('join', {
-                userId: 1,
-                username: 'You',
-                avatar: '😊'
-            });
-            socketRef.current.on('previous-messages', {
-                "GroupChat.useEffect": (previousMessages)=>{
-                    setMessages(previousMessages);
-                }
-            }["GroupChat.useEffect"]);
-            socketRef.current.on('new-message', {
-                "GroupChat.useEffect": (message)=>{
-                    setMessages({
-                        "GroupChat.useEffect": (prev)=>[
-                                ...prev,
-                                message
-                            ]
-                    }["GroupChat.useEffect"]);
-                }
-            }["GroupChat.useEffect"]);
-            socketRef.current.on('user-joined', {
-                "GroupChat.useEffect": ({ systemMessage, onlineCount })=>{
-                    setMessages({
-                        "GroupChat.useEffect": (prev)=>[
-                                ...prev,
-                                {
-                                    id: Date.now(),
-                                    text: systemMessage,
-                                    isSystem: true
-                                }
-                            ]
-                    }["GroupChat.useEffect"]);
-                    setOnlineCount(onlineCount);
-                }
-            }["GroupChat.useEffect"]);
-            socketRef.current.on('user-left', {
-                "GroupChat.useEffect": ({ systemMessage, onlineCount })=>{
-                    setMessages({
-                        "GroupChat.useEffect": (prev)=>[
-                                ...prev,
-                                {
-                                    id: Date.now(),
-                                    text: systemMessage,
-                                    isSystem: true
-                                }
-                            ]
-                    }["GroupChat.useEffect"]);
-                    setOnlineCount(onlineCount);
-                }
-            }["GroupChat.useEffect"]);
-            return ({
-                "GroupChat.useEffect": ()=>{
-                    socketRef.current.disconnect();
-                }
-            })["GroupChat.useEffect"];
+            const storedToken = localStorage.getItem('auth-token');
+            if (storedToken) {
+                setToken(storedToken);
+            }
         }
     }["GroupChat.useEffect"], []);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "GroupChat.useEffect": ()=>{
+            if (token) {
+                socketRef.current = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$socket$2e$io$2d$client$2f$build$2f$esm$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["io"])('http://localhost:5000', {
+                    query: {
+                        token
+                    }
+                });
+                socketRef.current.emit('join', {
+                    userId: 1,
+                    username: 'You',
+                    avatar: '😊'
+                });
+                socketRef.current.on('previous-messages', {
+                    "GroupChat.useEffect": (previousMessages)=>{
+                        setMessages(previousMessages);
+                    }
+                }["GroupChat.useEffect"]);
+                socketRef.current.on('new-message', {
+                    "GroupChat.useEffect": (message)=>{
+                        setMessages({
+                            "GroupChat.useEffect": (prev)=>[
+                                    ...prev,
+                                    message
+                                ]
+                        }["GroupChat.useEffect"]);
+                    }
+                }["GroupChat.useEffect"]);
+                socketRef.current.on('user-joined', {
+                    "GroupChat.useEffect": ({ systemMessage, onlineCount })=>{
+                        setMessages({
+                            "GroupChat.useEffect": (prev)=>[
+                                    ...prev,
+                                    {
+                                        id: Date.now(),
+                                        text: systemMessage,
+                                        isSystem: true
+                                    }
+                                ]
+                        }["GroupChat.useEffect"]);
+                        setOnlineCount(onlineCount);
+                    }
+                }["GroupChat.useEffect"]);
+                socketRef.current.on('user-left', {
+                    "GroupChat.useEffect": ({ systemMessage, onlineCount })=>{
+                        setMessages({
+                            "GroupChat.useEffect": (prev)=>[
+                                    ...prev,
+                                    {
+                                        id: Date.now(),
+                                        text: systemMessage,
+                                        isSystem: true
+                                    }
+                                ]
+                        }["GroupChat.useEffect"]);
+                        setOnlineCount(onlineCount);
+                    }
+                }["GroupChat.useEffect"]);
+                return ({
+                    "GroupChat.useEffect": ()=>{
+                        socketRef.current.disconnect();
+                    }
+                })["GroupChat.useEffect"];
+            }
+        }
+    }["GroupChat.useEffect"], [
+        token
+    ]);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "GroupChat.useEffect": ()=>{
             messagesEndRef.current?.scrollIntoView({
@@ -326,15 +345,29 @@ function GroupChat() {
         });
         setNewMessage('');
     };
+    const handleLogin = async (email, password)=>{
+        try {
+            const response = await __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].post('http://localhost:5000/login', {
+                email,
+                password
+            });
+            const { token } = response.data;
+            localStorage.setItem('auth-token', token);
+            setToken(token);
+        } catch (error) {
+            console.error('Login failed', error);
+        }
+    };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+        className: "h-screen bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 overflow-hidden",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$Header$2f$page$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                 fileName: "[project]/app/Group/page.js",
-                lineNumber: 67,
-                columnNumber: 13
+                lineNumber: 90,
+                columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "min-h-screen bg-gray-100",
+                className: "h-full flex flex-col",
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
                     initial: {
                         opacity: 0,
@@ -344,18 +377,18 @@ function GroupChat() {
                         opacity: 1,
                         y: 0
                     },
-                    className: "h-screen flex flex-col",
+                    className: "flex-1 flex flex-col p-8 space-y-6 overflow-hidden",
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 p-4 text-white",
+                            className: "bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 p-4 text-white rounded-lg shadow-lg",
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                                    className: "text-xl font-bold",
+                                    className: "text-2xl font-semibold",
                                     children: "Group Chat"
                                 }, void 0, false, {
                                     fileName: "[project]/app/Group/page.js",
-                                    lineNumber: 75,
-                                    columnNumber: 25
+                                    lineNumber: 98,
+                                    columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                     className: "text-sm",
@@ -365,17 +398,17 @@ function GroupChat() {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/Group/page.js",
-                                    lineNumber: 76,
-                                    columnNumber: 25
+                                    lineNumber: 99,
+                                    columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/Group/page.js",
-                            lineNumber: 74,
-                            columnNumber: 21
+                            lineNumber: 97,
+                            columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "flex-1 overflow-y-auto p-4 bg-gradient-to-b from-purple-600 via-pink-500 to-orange-400",
+                            className: "flex-1 overflow-y-auto p-6 bg-gradient-to-b from-purple-600 via-pink-500 to-orange-400 rounded-lg shadow-lg",
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$components$2f$AnimatePresence$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AnimatePresence"], {
                                 children: [
                                     messages.map((message)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
@@ -391,84 +424,84 @@ function GroupChat() {
                                                 opacity: 0,
                                                 scale: 0.95
                                             },
-                                            className: `flex items-start gap-2 mb-4 ${message.isSystem ? 'justify-center' : message.username === 'You' ? 'flex-row-reverse' : ''}`,
+                                            className: `flex items-start gap-3 mb-4 ${message.isSystem ? 'justify-center' : message.username === 'You' ? 'flex-row-reverse justify-end' : 'justify-start'}`,
                                             children: [
                                                 !message.isSystem && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: "w-8 h-8 rounded-full flex items-center justify-center bg-white",
+                                                    className: "w-10 h-10 rounded-full flex items-center justify-center bg-white shadow-md",
                                                     children: message.avatar
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/Group/page.js",
-                                                    lineNumber: 96,
-                                                    columnNumber: 41
+                                                    lineNumber: 113,
+                                                    columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: `p-3 rounded-lg ${message.isSystem ? 'bg-gray-200 text-gray-600 text-sm italic' : message.username === 'You' ? 'bg-purple-600 text-white max-w-[70%]' : 'bg-white text-black max-w-[70%]'}`,
+                                                    className: `p-4 rounded-lg shadow-lg max-w-[75%] ${message.isSystem ? 'bg-gray-200 text-gray-600 text-sm italic' : message.username === 'You' ? 'bg-purple-600 text-white' : 'bg-white text-black'}`,
                                                     children: [
                                                         !message.isSystem && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                            className: "text-xs font-bold mb-1",
+                                                            className: "text-xs font-semibold mb-2",
                                                             children: message.username
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/Group/page.js",
-                                                            lineNumber: 110,
-                                                            columnNumber: 45
+                                                            lineNumber: 118,
+                                                            columnNumber: 43
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                             className: "text-sm",
                                                             children: message.text
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/Group/page.js",
-                                                            lineNumber: 112,
-                                                            columnNumber: 41
+                                                            lineNumber: 119,
+                                                            columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/Group/page.js",
-                                                    lineNumber: 100,
-                                                    columnNumber: 37
+                                                    lineNumber: 117,
+                                                    columnNumber: 19
                                                 }, this)
                                             ]
                                         }, message.id, true, {
                                             fileName: "[project]/app/Group/page.js",
-                                            lineNumber: 82,
-                                            columnNumber: 33
+                                            lineNumber: 105,
+                                            columnNumber: 17
                                         }, this)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         ref: messagesEndRef
                                     }, void 0, false, {
                                         fileName: "[project]/app/Group/page.js",
-                                        lineNumber: 116,
-                                        columnNumber: 29
+                                        lineNumber: 123,
+                                        columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/Group/page.js",
-                                lineNumber: 80,
-                                columnNumber: 25
+                                lineNumber: 103,
+                                columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/app/Group/page.js",
-                            lineNumber: 79,
-                            columnNumber: 21
+                            lineNumber: 102,
+                            columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
                             onSubmit: sendMessage,
-                            className: "p-4 border-t bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400",
+                            className: "p-6 border-t bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 rounded-lg mt-4 shadow-lg",
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "flex gap-2",
+                                className: "flex flex-col sm:flex-row gap-3 sm:gap-5",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].input, {
                                         whileFocus: {
-                                            scale: 1.01
+                                            scale: 1.02
                                         },
                                         type: "text",
                                         value: newMessage,
                                         onChange: (e)=>setNewMessage(e.target.value),
                                         placeholder: "Type your message...",
-                                        className: "flex-1 p-2 border rounded-lg focus:outline-none focus:border-purple-600 text-black bg-white"
+                                        className: "flex-1 p-4 border rounded-lg focus:outline-none focus:border-purple-600 text-black bg-white shadow-md"
                                     }, void 0, false, {
                                         fileName: "[project]/app/Group/page.js",
-                                        lineNumber: 122,
-                                        columnNumber: 29
+                                        lineNumber: 129,
+                                        columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].button, {
                                         whileHover: {
@@ -478,43 +511,43 @@ function GroupChat() {
                                             scale: 0.95
                                         },
                                         type: "submit",
-                                        className: "bg-purple-600 text-white px-4 py-2 rounded-lg",
+                                        className: "bg-purple-600 text-white px-6 py-3 rounded-lg w-full sm:w-auto shadow-md",
                                         children: "Send"
                                     }, void 0, false, {
                                         fileName: "[project]/app/Group/page.js",
-                                        lineNumber: 130,
-                                        columnNumber: 29
+                                        lineNumber: 137,
+                                        columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/Group/page.js",
-                                lineNumber: 121,
-                                columnNumber: 25
+                                lineNumber: 128,
+                                columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/app/Group/page.js",
-                            lineNumber: 120,
-                            columnNumber: 21
+                            lineNumber: 127,
+                            columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/Group/page.js",
-                    lineNumber: 69,
-                    columnNumber: 17
+                    lineNumber: 92,
+                    columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/Group/page.js",
-                lineNumber: 68,
-                columnNumber: 13
+                lineNumber: 91,
+                columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/Group/page.js",
-        lineNumber: 66,
-        columnNumber: 9
+        lineNumber: 89,
+        columnNumber: 5
     }, this);
 }
-_s(GroupChat, "XBuORK2b7mFAG95GbtrmEK6m/vM=");
+_s(GroupChat, "scfe+apU0HCNZ6gAu1+hzJLjP2Q=");
 _c = GroupChat;
 var _c;
 __turbopack_refresh__.register(_c, "GroupChat");

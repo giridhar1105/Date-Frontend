@@ -275,7 +275,6 @@ function AIChat() {
                     type: 'user'
                 }
             ]);
-            // Make request to backend API
             try {
                 const timestamp = new Date().toISOString();
                 const response = await fetch('http://localhost:5000/gemini-1.5-flash', {
@@ -310,7 +309,7 @@ function AIChat() {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$Header$2f$page$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                 fileName: "[project]/app/AI/page.js",
-                lineNumber: 54,
+                lineNumber: 53,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -320,7 +319,7 @@ function AIChat() {
                     animation: 'gradientAnimation 15s ease infinite'
                 },
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "max-w-3xl mx-auto bg-white/10 backdrop-blur-lg rounded-2xl    shadow-xl overflow-hidden border border-white/20",
+                    className: "max-w-3xl mx-auto bg-white/10 backdrop-blur-lg rounded-2xl  shadow-xl overflow-hidden border border-white/20",
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "h-[600px] overflow-y-auto p-4 space-y-4",
@@ -332,25 +331,25 @@ function AIChat() {
                                             children: message.text
                                         }, void 0, false, {
                                             fileName: "[project]/app/AI/page.js",
-                                            lineNumber: 66,
+                                            lineNumber: 65,
                                             columnNumber: 33
                                         }, this)
                                     }, index, false, {
                                         fileName: "[project]/app/AI/page.js",
-                                        lineNumber: 64,
+                                        lineNumber: 63,
                                         columnNumber: 29
                                     }, this)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     ref: messagesEndRef
                                 }, void 0, false, {
                                     fileName: "[project]/app/AI/page.js",
-                                    lineNumber: 75,
+                                    lineNumber: 74,
                                     columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/AI/page.js",
-                            lineNumber: 62,
+                            lineNumber: 61,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
@@ -363,48 +362,48 @@ function AIChat() {
                                         type: "text",
                                         value: input,
                                         onChange: (e)=>setInput(e.target.value),
-                                        className: "flex-1 bg-white/10 backdrop-blur rounded-xl px-4 py-2    text-white placeholder-white/50 focus:outline-none    focus:ring-2 focus:ring-purple-500 transition-all",
+                                        className: "flex-1 bg-white/10 backdrop-blur rounded-xl px-4 py-2  text-white placeholder-white/50 focus:outline-none  focus:ring-2 focus:ring-purple-500 tansition-all",
                                         placeholder: "Type your message..."
                                     }, void 0, false, {
                                         fileName: "[project]/app/AI/page.js",
-                                        lineNumber: 80,
+                                        lineNumber: 79,
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                         type: "submit",
-                                        className: "bg-purple-500 hover:bg-purple-600 text-white px-6 py-2    rounded-xl transition-all transform hover:scale-105    active:scale-95",
+                                        className: "bg-purple-500 hover:bg-purple-600 text-white px-6 py-2  rounded-xl transition-all transform hover:scale-105  active:scale-95",
                                         children: "Send"
                                     }, void 0, false, {
                                         fileName: "[project]/app/AI/page.js",
-                                        lineNumber: 89,
+                                        lineNumber: 88,
                                         columnNumber: 29
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/AI/page.js",
-                                lineNumber: 79,
+                                lineNumber: 78,
                                 columnNumber: 25
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/app/AI/page.js",
-                            lineNumber: 78,
+                            lineNumber: 77,
                             columnNumber: 21
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/AI/page.js",
-                    lineNumber: 60,
+                    lineNumber: 59,
                     columnNumber: 17
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/AI/page.js",
-                lineNumber: 55,
+                lineNumber: 54,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/AI/page.js",
-        lineNumber: 53,
+        lineNumber: 52,
         columnNumber: 9
     }, this);
 }

@@ -18,6 +18,7 @@ export default function Login() {
         setLoading(true);
 
         try {
+            // Call the backend login API
             const response = await fetch('http://localhost:5000/login', {
                 method: 'POST',
                 headers: {
@@ -29,13 +30,14 @@ export default function Login() {
             const data = await response.json();
 
             if (response.ok) {
-                // Store token and user data
-                localStorage.setItem('token', data.token);
-                localStorage.setItem('currentUser', JSON.stringify(data.user));
-                
-                // Redirect to chat or dashboard
-                router.push('/chat');
+                // Store the JWT token and user data in localStorage
+                localStorage.setItem('token', data.token); // Store the token
+                localStorage.setItem('currentUser', JSON.stringify(data.user)); // Store user data
+
+                // Redirect to the chat/dashboard page or any other protected page
+                router.push('/');
             } else {
+                // Display error if login fails
                 setError(data.message);
             }
         } catch (err) {
@@ -112,7 +114,7 @@ export default function Login() {
                 <div className="mt-6 text-center space-y-2">
                     <p className="text-gray-600">
                         Don't have an account?{' '}
-                        <Link href="/signup" className="text-purple-600 hover:underline">
+                        <Link href="/Signup" className="text-purple-600 hover:underline">
                             Sign Up
                         </Link>
                     </p>

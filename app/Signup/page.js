@@ -5,11 +5,11 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 
 export default function SignUp() {
-  const router = useRouter(); // Make sure to import useRouter
+  const router = useRouter();
   const [formData, setFormData] = useState({
     username: '',
     email: '',
-    otp: '', // Added OTP field
+    otp: '',
     password: '',
     place: '',
     age: '',
@@ -20,14 +20,14 @@ export default function SignUp() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
-  const [otpLoading, setOtpLoading] = useState(false); // Added OTP loading state
+  const [otpLoading, setOtpLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(null);
     setSuccess(null);
 
-    // Validate required fields
+    // Form validation
     if (
       !formData.username ||
       !formData.email ||
@@ -42,7 +42,6 @@ export default function SignUp() {
       return;
     }
 
-    // Simple email validation (can be expanded for stricter validation)
     const emailPattern =
       /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (!emailPattern.test(formData.email)) {
@@ -50,7 +49,6 @@ export default function SignUp() {
       return;
     }
 
-    // Simple age validation
     if (isNaN(formData.age) || formData.age < 18) {
       setError('Age must be a valid number and at least 18');
       return;
@@ -74,15 +72,19 @@ export default function SignUp() {
         setFormData({
           username: '',
           email: '',
-          otp: '', // Reset OTP
+          otp: '',
           password: '',
           place: '',
           age: '',
           gender: '',
           interested: '',
         });
-        window.alert('Signup successful!!! Enjoy your journey with us!!!');
-        router.push('/Home');
+
+        // Store user data in localStorage
+        localStorage.setItem('userData', JSON.stringify(formData));
+
+        window.alert('Signup successful! Enjoy your journey with us!');
+        router.push('/'); // Redirect to the profile page
       } else {
         setError(data.message);
       }
@@ -93,13 +95,11 @@ export default function SignUp() {
     }
   };
 
-  // Placeholder for OTP handling (if needed)
   const handleGetOtp = async () => {
     setOtpLoading(true);
     setError('');
 
     try {
-      // Call an API to send OTP (just a placeholder here)
       const response = await fetch('http://localhost:5000/getOtp', {
         method: 'POST',
         headers: {
@@ -147,7 +147,6 @@ export default function SignUp() {
         )}
 
         <form onSubmit={handleSubmit}>
-          {/* Username Field */}
           <motion.div
             initial={{ x: -100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
@@ -165,7 +164,6 @@ export default function SignUp() {
             />
           </motion.div>
 
-          {/* Email Field */}
           <motion.div
             initial={{ x: -100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
@@ -183,7 +181,6 @@ export default function SignUp() {
             />
           </motion.div>
 
-          {/* OTP Field */}
           <motion.div
             initial={{ x: -100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
@@ -209,7 +206,6 @@ export default function SignUp() {
             </button>
           </motion.div>
 
-          {/* Password Field */}
           <motion.div
             initial={{ x: -100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
@@ -227,7 +223,6 @@ export default function SignUp() {
             />
           </motion.div>
 
-          {/* Place Field */}
           <motion.div
             initial={{ x: -100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
@@ -245,7 +240,6 @@ export default function SignUp() {
             />
           </motion.div>
 
-          {/* Age Field */}
           <motion.div
             initial={{ x: -100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
@@ -263,7 +257,6 @@ export default function SignUp() {
             />
           </motion.div>
 
-          {/* Gender Selection */}
           <motion.div
             initial={{ x: -100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
@@ -284,7 +277,6 @@ export default function SignUp() {
             </select>
           </motion.div>
 
-          {/* Interested In Field */}
           <motion.div
             initial={{ x: -100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
@@ -305,7 +297,6 @@ export default function SignUp() {
             </select>
           </motion.div>
 
-          {/* Submit Button */}
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
