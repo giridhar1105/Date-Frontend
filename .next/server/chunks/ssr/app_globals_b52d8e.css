@@ -769,6 +769,10 @@ img, video {
   padding: 2rem;
 }
 
+.p-10 {
+  padding: 2.5rem;
+}
+
 .px-3 {
   padding-left: .75rem;
   padding-right: .75rem;
@@ -806,6 +810,14 @@ img, video {
 
 .pt-24 {
   padding-top: 6rem;
+}
+
+.pt-12 {
+  padding-top: 3rem;
+}
+
+.pt-1 {
+  padding-top: .25rem;
 }
 
 .text-center {

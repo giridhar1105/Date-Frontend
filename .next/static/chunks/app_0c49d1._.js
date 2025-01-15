@@ -237,6 +237,7 @@ function AIChat() {
     _s();
     const [messages, setMessages] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
     const [input, setInput] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])('');
+    const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false); // To track loading state
     const messagesEndRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
     const scrollToBottom = ()=>{
         messagesEndRef.current?.scrollIntoView({
@@ -253,6 +254,7 @@ function AIChat() {
     const handleSubmit = async (e)=>{
         e.preventDefault();
         if (input.trim()) {
+            // Add user message
             setMessages([
                 ...messages,
                 {
@@ -260,6 +262,8 @@ function AIChat() {
                     type: 'user'
                 }
             ]);
+            // Show loading indicator
+            setLoading(true);
             try {
                 const timestamp = new Date().toISOString();
                 const response = await fetch('http://localhost:5000/gemini-1.5-flash', {
@@ -283,10 +287,26 @@ function AIChat() {
                         ]);
                 } else {
                     console.error('Error from server:', response.statusText);
+                    setMessages((prev)=>[
+                            ...prev,
+                            {
+                                text: 'Sorry, there was an error. Please try again.',
+                                type: 'ai'
+                            }
+                        ]);
                 }
             } catch (error) {
                 console.error('Error in request:', error);
+                setMessages((prev)=>[
+                        ...prev,
+                        {
+                            text: 'Failed to connect. Please check your connection.',
+                            type: 'ai'
+                        }
+                    ]);
             }
+            // Hide loading indicator
+            setLoading(false);
             setInput('');
         }
     };
@@ -294,11 +314,11 @@ function AIChat() {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$Header$2f$page$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                 fileName: "[project]/app/AI/page.js",
-                lineNumber: 53,
+                lineNumber: 69,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "min-h-screen p-4",
+                className: "min-h-screen p-4 pt-12",
                 style: {
                     background: 'linear-gradient(45deg, #6b46c1, #ec4899, #fb923c)',
                     animation: 'gradientAnimation 15s ease infinite'
@@ -316,25 +336,40 @@ function AIChat() {
                                             children: message.text
                                         }, void 0, false, {
                                             fileName: "[project]/app/AI/page.js",
-                                            lineNumber: 65,
+                                            lineNumber: 81,
                                             columnNumber: 33
                                         }, this)
                                     }, index, false, {
                                         fileName: "[project]/app/AI/page.js",
-                                        lineNumber: 63,
+                                        lineNumber: 79,
                                         columnNumber: 29
                                     }, this)),
+                                loading && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "flex justify-start",
+                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "max-w-[80%] p-4 rounded-2xl bg-white/20 backdrop-blur animate-slideRight",
+                                        children: "Thinking... 🤖"
+                                    }, void 0, false, {
+                                        fileName: "[project]/app/AI/page.js",
+                                        lineNumber: 91,
+                                        columnNumber: 33
+                                    }, this)
+                                }, void 0, false, {
+                                    fileName: "[project]/app/AI/page.js",
+                                    lineNumber: 90,
+                                    columnNumber: 29
+                                }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     ref: messagesEndRef
                                 }, void 0, false, {
                                     fileName: "[project]/app/AI/page.js",
-                                    lineNumber: 74,
+                                    lineNumber: 96,
                                     columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/AI/page.js",
-                            lineNumber: 61,
+                            lineNumber: 77,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
@@ -347,11 +382,11 @@ function AIChat() {
                                         type: "text",
                                         value: input,
                                         onChange: (e)=>setInput(e.target.value),
-                                        className: "flex-1 bg-white/10 backdrop-blur rounded-xl px-4 py-2  text-white placeholder-white/50 focus:outline-none  focus:ring-2 focus:ring-purple-500 tansition-all",
+                                        className: "flex-1 bg-white/10 backdrop-blur rounded-xl px-4 py-2  text-white placeholder-white/50 focus:outline-none  focus:ring-2 focus:ring-purple-500 transition-all",
                                         placeholder: "Type your message..."
                                     }, void 0, false, {
                                         fileName: "[project]/app/AI/page.js",
-                                        lineNumber: 79,
+                                        lineNumber: 101,
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -360,39 +395,39 @@ function AIChat() {
                                         children: "Send"
                                     }, void 0, false, {
                                         fileName: "[project]/app/AI/page.js",
-                                        lineNumber: 88,
+                                        lineNumber: 110,
                                         columnNumber: 29
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/AI/page.js",
-                                lineNumber: 78,
+                                lineNumber: 100,
                                 columnNumber: 25
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/app/AI/page.js",
-                            lineNumber: 77,
+                            lineNumber: 99,
                             columnNumber: 21
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/AI/page.js",
-                    lineNumber: 59,
+                    lineNumber: 75,
                     columnNumber: 17
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/AI/page.js",
-                lineNumber: 54,
+                lineNumber: 70,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/AI/page.js",
-        lineNumber: 52,
+        lineNumber: 68,
         columnNumber: 9
     }, this);
 }
-_s(AIChat, "ub7mF0g0316z3YNHsiLBOML0ce4=");
+_s(AIChat, "Dj2Fwf2x2Jq+kEf3LQn5UijOKhw=");
 _c = AIChat;
 var _c;
 __turbopack_refresh__.register(_c, "AIChat");

@@ -6,6 +6,7 @@ import Header from '../Header/page';
 export default function AIChat() {
     const [messages, setMessages] = useState([]);
     const [input, setInput] = useState('');
+    const [loading, setLoading] = useState(false); // To track loading state
     const messagesEndRef = useRef(null);
 
     const scrollToBottom = () => {
@@ -19,7 +20,11 @@ export default function AIChat() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (input.trim()) {
+            // Add user message
             setMessages([...messages, { text: input, type: 'user' }]);
+
+            // Show loading indicator
+            setLoading(true);
 
             try {
                 const timestamp = new Date().toISOString();
@@ -30,7 +35,7 @@ export default function AIChat() {
                     },
                     body: JSON.stringify({ input, timestamp }),
                 });
-                
+
                 if (response.ok) {
                     const data = await response.json();
                     setMessages(prev => [
@@ -39,10 +44,21 @@ export default function AIChat() {
                     ]);
                 } else {
                     console.error('Error from server:', response.statusText);
+                    setMessages(prev => [
+                        ...prev,
+                        { text: 'Sorry, there was an error. Please try again.', type: 'ai' }
+                    ]);
                 }
             } catch (error) {
                 console.error('Error in request:', error);
+                setMessages(prev => [
+                    ...prev,
+                    { text: 'Failed to connect. Please check your connection.', type: 'ai' }
+                ]);
             }
+
+            // Hide loading indicator
+            setLoading(false);
 
             setInput('');
         }
@@ -51,7 +67,7 @@ export default function AIChat() {
     return (
         <div>
             <Header />
-            <div className="min-h-screen p-4"
+            <div className="min-h-screen p-4 pt-12"
                 style={{
                     background: 'linear-gradient(45deg, #6b46c1, #ec4899, #fb923c)',
                     animation: 'gradientAnimation 15s ease infinite',
@@ -62,8 +78,7 @@ export default function AIChat() {
                         {messages.map((message, index) => (
                             <div key={index}
                                 className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}>
-                                <div className={`max-w-[80%] p-4 rounded-2xl ${
-                                    message.type === 'user'
+                                <div className={`max-w-[80%] p-4 rounded-2xl ${message.type === 'user'
                                         ? 'bg-purple-500 text-white ml-auto animate-slideLeft'
                                         : 'bg-white/20 backdrop-blur animate-slideRight'
                                     }`}>
@@ -71,6 +86,13 @@ export default function AIChat() {
                                 </div>
                             </div>
                         ))}
+                        {loading && (
+                            <div className="flex justify-start">
+                                <div className="max-w-[80%] p-4 rounded-2xl bg-white/20 backdrop-blur animate-slideRight">
+                                    Thinking... 🤖
+                                </div>
+                            </div>
+                        )}
                         <div ref={messagesEndRef} />
                     </div>
 
@@ -82,7 +104,7 @@ export default function AIChat() {
                                 onChange={(e) => setInput(e.target.value)}
                                 className="flex-1 bg-white/10 backdrop-blur rounded-xl px-4 py-2 
                                            text-white placeholder-white/50 focus:outline-none 
-                                           focus:ring-2 focus:ring-purple-500 tansition-all"
+                                           focus:ring-2 focus:ring-purple-500 transition-all"
                                 placeholder="Type your message..."
                             />
                             <button
