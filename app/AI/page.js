@@ -6,7 +6,7 @@ import Header from '../Header/page';
 export default function AIChat() {
     const [messages, setMessages] = useState([]);
     const [input, setInput] = useState('');
-    const [loading, setLoading] = useState(false); // To track loading state
+    const [loading, setLoading] = useState(false);
     const messagesEndRef = useRef(null);
 
     const scrollToBottom = () => {
@@ -20,10 +20,8 @@ export default function AIChat() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (input.trim()) {
-            // Add user message
             setMessages([...messages, { text: input, type: 'user' }]);
 
-            // Show loading indicator
             setLoading(true);
 
             try {
@@ -57,7 +55,6 @@ export default function AIChat() {
                 ]);
             }
 
-            // Hide loading indicator
             setLoading(false);
 
             setInput('');
