@@ -3,13 +3,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect, useRef } from 'react';
 import { io } from 'socket.io-client';
 import Header from '../Header/page';
-import axios from 'axios'; // For making HTTP requests
+import axios from 'axios'; 
 
 export default function GroupChat() {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
   const [onlineCount, setOnlineCount] = useState(0);
-  const [token, setToken] = useState(null);  // For storing JWT token
+  const [token, setToken] = useState(null); 
   const socketRef = useRef(null);
   const messagesEndRef = useRef(null);
 
