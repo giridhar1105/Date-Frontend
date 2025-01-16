@@ -56,7 +56,6 @@ export default function AIChat() {
             }
 
             setLoading(false);
-
             setInput('');
         }
     };
@@ -86,7 +85,7 @@ export default function AIChat() {
                         {loading && (
                             <div className="flex justify-start">
                                 <div className="max-w-[80%] p-4 rounded-2xl bg-white/20 backdrop-blur animate-slideRight">
-                                    Thinking... 🤖
+                                    Wait for the message Baby ❤️
                                 </div>
                             </div>
                         )}
