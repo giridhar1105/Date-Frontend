@@ -16,6 +16,7 @@ const Header = () => {
     { title: 'Group Chat', path: '/Group' },
     { title: 'AI Chat', path: '/AI' },
     { title: 'Feedback', path: '/Feedback' },
+    { title: 'Video Call', path: '/Video'},
     { title: 'Profile', path: '/Profile' }
   ];
 

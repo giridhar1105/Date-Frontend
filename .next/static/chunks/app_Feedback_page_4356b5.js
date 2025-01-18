@@ -8,8 +8,8 @@
     "static/chunks/node_modules_framer-motion_dist_es_d676b8._.js",
     "static/chunks/node_modules_react-icons_fa_index_mjs_d2e2d7._.js",
     "static/chunks/node_modules_react-icons_lib_74ccc9._.js",
-    "static/chunks/node_modules_8995a5._.js",
-    "static/chunks/app_Feedback_page_f08b41.js"
+    "static/chunks/node_modules_1e0af8._.js",
+    "static/chunks/app_230771._.js"
   ],
   "source": "dynamic"
 });

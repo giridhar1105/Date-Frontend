@@ -94,7 +94,7 @@ export default function GroupChat() {
           animate={{ opacity: 1, y: 0 }}
           className="flex-1 flex flex-col p-8 space-y-6 overflow-hidden"
         >
-          <div className="bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 p-4 text-white rounded-lg shadow-lg">
+          <div className="bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 p-10 text-white rounded-lg shadow-lg">
             <h1 className="text-2xl font-semibold">Group Chat</h1>
             <p className="text-sm">{onlineCount} participants online</p>
           </div>

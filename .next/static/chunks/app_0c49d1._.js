@@ -237,7 +237,7 @@ function AIChat() {
     _s();
     const [messages, setMessages] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
     const [input, setInput] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])('');
-    const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false); // To track loading state
+    const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const messagesEndRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
     const scrollToBottom = ()=>{
         messagesEndRef.current?.scrollIntoView({
@@ -254,7 +254,6 @@ function AIChat() {
     const handleSubmit = async (e)=>{
         e.preventDefault();
         if (input.trim()) {
-            // Add user message
             setMessages([
                 ...messages,
                 {
@@ -262,7 +261,6 @@ function AIChat() {
                     type: 'user'
                 }
             ]);
-            // Show loading indicator
             setLoading(true);
             try {
                 const timestamp = new Date().toISOString();
@@ -305,7 +303,6 @@ function AIChat() {
                         }
                     ]);
             }
-            // Hide loading indicator
             setLoading(false);
             setInput('');
         }
@@ -314,7 +311,7 @@ function AIChat() {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$Header$2f$page$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                 fileName: "[project]/app/AI/page.js",
-                lineNumber: 69,
+                lineNumber: 65,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -336,40 +333,40 @@ function AIChat() {
                                             children: message.text
                                         }, void 0, false, {
                                             fileName: "[project]/app/AI/page.js",
-                                            lineNumber: 81,
+                                            lineNumber: 77,
                                             columnNumber: 33
                                         }, this)
                                     }, index, false, {
                                         fileName: "[project]/app/AI/page.js",
-                                        lineNumber: 79,
+                                        lineNumber: 75,
                                         columnNumber: 29
                                     }, this)),
                                 loading && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "flex justify-start",
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "max-w-[80%] p-4 rounded-2xl bg-white/20 backdrop-blur animate-slideRight",
-                                        children: "Thinking... 🤖"
+                                        children: "Wait for the message Baby ❤️"
                                     }, void 0, false, {
                                         fileName: "[project]/app/AI/page.js",
-                                        lineNumber: 91,
+                                        lineNumber: 87,
                                         columnNumber: 33
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/AI/page.js",
-                                    lineNumber: 90,
+                                    lineNumber: 86,
                                     columnNumber: 29
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     ref: messagesEndRef
                                 }, void 0, false, {
                                     fileName: "[project]/app/AI/page.js",
-                                    lineNumber: 96,
+                                    lineNumber: 92,
                                     columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/AI/page.js",
-                            lineNumber: 77,
+                            lineNumber: 73,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
@@ -386,7 +383,7 @@ function AIChat() {
                                         placeholder: "Type your message..."
                                     }, void 0, false, {
                                         fileName: "[project]/app/AI/page.js",
-                                        lineNumber: 101,
+                                        lineNumber: 97,
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -395,35 +392,35 @@ function AIChat() {
                                         children: "Send"
                                     }, void 0, false, {
                                         fileName: "[project]/app/AI/page.js",
-                                        lineNumber: 110,
+                                        lineNumber: 106,
                                         columnNumber: 29
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/AI/page.js",
-                                lineNumber: 100,
+                                lineNumber: 96,
                                 columnNumber: 25
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/app/AI/page.js",
-                            lineNumber: 99,
+                            lineNumber: 95,
                             columnNumber: 21
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/AI/page.js",
-                    lineNumber: 75,
+                    lineNumber: 71,
                     columnNumber: 17
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/AI/page.js",
-                lineNumber: 70,
+                lineNumber: 66,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/AI/page.js",
-        lineNumber: 68,
+        lineNumber: 64,
         columnNumber: 9
     }, this);
 }
