@@ -1,11 +1,4 @@
 {
-  "/page": "app/page.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/OneVone/page": "app/OneVone/page.js",
   "/Group/page": "app/Group/page.js",
-  "/AI/page": "app/AI/page.js",
-  "/Feedback/page": "app/Feedback/page.js",
-  "/_not-found/page": "app/_not-found/page.js",
-  "/Profile/page": "app/Profile/page.js",
-  "/Signup/page": "app/Signup/page.js"
+  "/favicon.ico/route": "app/favicon.ico/route.js"
 }

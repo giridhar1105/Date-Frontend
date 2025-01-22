@@ -363,6 +363,10 @@ img, video {
   top: 0;
 }
 
+.right-8 {
+  right: 2rem;
+}
+
 .z-50 {
   z-index: 50;
 }
@@ -843,6 +847,10 @@ img, video {
 
 .p-8 {
   padding: 2rem;
+}
+
+.p-7 {
+  padding: 1.75rem;
 }
 
 .px-3 {

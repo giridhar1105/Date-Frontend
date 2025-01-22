@@ -10,7 +10,7 @@ export default function GroupChat() {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
   const [onlineCount, setOnlineCount] = useState(0);
-  const [token, setToken] = useState(null); 
+  const [token, setToken] = useState(null);
   const socketRef = useRef(null);
   const messagesEndRef = useRef(null);
 
@@ -27,23 +27,19 @@ export default function GroupChat() {
         query: { token }
       });
 
-      // Join the group chat with user details
       socketRef.current.emit('join', {
-        username: 'You', // Replace with actual username
+        username: 'You',
         avatar: '😊'
       });
 
-      // Listen for previous messages when the user joins
       socketRef.current.on('previous-messages', (previousMessages) => {
         setMessages(previousMessages);
       });
 
-      // Listen for new messages
       socketRef.current.on('new-message', (message) => {
         setMessages(prev => [...prev, message]);
       });
 
-      // Handle user join and leave events
       socketRef.current.on('user-joined', ({ systemMessage, onlineCount }) => {
         setMessages(prev => [...prev, { id: Date.now(), text: systemMessage, isSystem: true }]);
         setOnlineCount(onlineCount);
@@ -68,10 +64,19 @@ export default function GroupChat() {
     e.preventDefault();
     if (!newMessage.trim()) return;
 
-    // Send new message to server
+    const tempMessage = {
+      id: Date.now(),
+      username: 'You',
+      text: newMessage,
+      avatar: '😊',
+      isTemp: true,  // Flag to identify the temporary message
+    };
+
+    setMessages(prev => [...prev, tempMessage]);  // Add temporary message for animation
+
     socketRef.current.emit('send-message', {
-      userId: 1, // Replace with actual user ID
-      username: 'You', // Replace with actual username
+      userId: 1,
+      username: 'You',
       text: newMessage,
       avatar: '😊'
     });
@@ -99,7 +104,7 @@ export default function GroupChat() {
           animate={{ opacity: 1, y: 0 }}
           className="flex-1 flex flex-col p-8 space-y-6 overflow-hidden"
         >
-          <div className="bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 p-10 text-white rounded-lg shadow-lg">
+          <div className="bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 p-7 text-white rounded-lg shadow-lg">
             <h1 className="text-2xl font-semibold">Group Chat</h1>
             <p className="text-sm">{onlineCount} participants online</p>
           </div>
@@ -109,9 +114,13 @@ export default function GroupChat() {
               {messages.map((message) => (
                 <motion.div
                   key={message.id}
-                  initial={{ opacity: 0, x: message.username === 'You' ? 20 : -20 }}
+                  initial={{
+                    opacity: 0,
+                    x: 100,  // All messages slide in from the right (for both you and others)
+                  }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ type: 'spring', stiffness: 300 }}
                   className={`flex items-start gap-3 mb-4 ${message.isSystem ? 'justify-center' : message.username === 'You' ? 'flex-row-reverse justify-end' : 'justify-start'}`}
                 >
                   {!message.isSystem && (
