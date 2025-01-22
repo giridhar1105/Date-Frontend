@@ -196,6 +196,10 @@ const Header = ()=>{
             path: '/Feedback'
         },
         {
+            title: 'Video Call',
+            path: '/Video'
+        },
+        {
             title: 'Profile',
             path: '/Profile'
         }
@@ -239,12 +243,12 @@ const Header = ()=>{
                             children: "Logo"
                         }, void 0, false, {
                             fileName: "[project]/app/Header/page.js",
-                            lineNumber: 45,
+                            lineNumber: 46,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/Header/page.js",
-                        lineNumber: 39,
+                        lineNumber: 40,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -278,18 +282,18 @@ const Header = ()=>{
                                                 }
                                             }, void 0, false, {
                                                 fileName: "[project]/app/Header/page.js",
-                                                lineNumber: 66,
+                                                lineNumber: 67,
                                                 columnNumber: 21
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/Header/page.js",
-                                        lineNumber: 59,
+                                        lineNumber: 60,
                                         columnNumber: 17
                                     }, this)
                                 }, index, false, {
                                     fileName: "[project]/app/Header/page.js",
-                                    lineNumber: 52,
+                                    lineNumber: 53,
                                     columnNumber: 15
                                 }, this)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -307,7 +311,7 @@ const Header = ()=>{
                                         children: "Login"
                                     }, void 0, false, {
                                         fileName: "[project]/app/Header/page.js",
-                                        lineNumber: 79,
+                                        lineNumber: 80,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].button, {
@@ -322,35 +326,35 @@ const Header = ()=>{
                                         children: "Sign Up"
                                     }, void 0, false, {
                                         fileName: "[project]/app/Header/page.js",
-                                        lineNumber: 88,
+                                        lineNumber: 89,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/Header/page.js",
-                                lineNumber: 78,
+                                lineNumber: 79,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/Header/page.js",
-                        lineNumber: 50,
+                        lineNumber: 51,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/Header/page.js",
-                lineNumber: 38,
+                lineNumber: 39,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/app/Header/page.js",
-            lineNumber: 37,
+            lineNumber: 38,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/app/Header/page.js",
-        lineNumber: 31,
+        lineNumber: 32,
         columnNumber: 5
     }, this);
 };
@@ -415,20 +419,23 @@ function GroupChat() {
                     token
                 }
             });
+            // Join the group chat with user details
             socketRef.current.emit('join', {
-                userId: 1,
                 username: 'You',
                 avatar: '😊'
             });
+            // Listen for previous messages when the user joins
             socketRef.current.on('previous-messages', (previousMessages)=>{
                 setMessages(previousMessages);
             });
+            // Listen for new messages
             socketRef.current.on('new-message', (message)=>{
                 setMessages((prev)=>[
                         ...prev,
                         message
                     ]);
             });
+            // Handle user join and leave events
             socketRef.current.on('user-joined', ({ systemMessage, onlineCount })=>{
                 setMessages((prev)=>[
                         ...prev,
@@ -468,6 +475,7 @@ function GroupChat() {
     const sendMessage = (e)=>{
         e.preventDefault();
         if (!newMessage.trim()) return;
+        // Send new message to server
         socketRef.current.emit('send-message', {
             userId: 1,
             username: 'You',
@@ -494,7 +502,7 @@ function GroupChat() {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$Header$2f$page$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                 fileName: "[project]/app/Group/page.js",
-                lineNumber: 90,
+                lineNumber: 95,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -518,7 +526,7 @@ function GroupChat() {
                                     children: "Group Chat"
                                 }, void 0, false, {
                                     fileName: "[project]/app/Group/page.js",
-                                    lineNumber: 98,
+                                    lineNumber: 103,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -529,13 +537,13 @@ function GroupChat() {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/Group/page.js",
-                                    lineNumber: 99,
+                                    lineNumber: 104,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/Group/page.js",
-                            lineNumber: 97,
+                            lineNumber: 102,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -562,7 +570,7 @@ function GroupChat() {
                                                     children: message.avatar
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/Group/page.js",
-                                                    lineNumber: 113,
+                                                    lineNumber: 118,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -573,7 +581,7 @@ function GroupChat() {
                                                             children: message.username
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/Group/page.js",
-                                                            lineNumber: 118,
+                                                            lineNumber: 123,
                                                             columnNumber: 43
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -581,37 +589,37 @@ function GroupChat() {
                                                             children: message.text
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/Group/page.js",
-                                                            lineNumber: 119,
+                                                            lineNumber: 124,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/Group/page.js",
-                                                    lineNumber: 117,
+                                                    lineNumber: 122,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, message.id, true, {
                                             fileName: "[project]/app/Group/page.js",
-                                            lineNumber: 105,
+                                            lineNumber: 110,
                                             columnNumber: 17
                                         }, this)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         ref: messagesEndRef
                                     }, void 0, false, {
                                         fileName: "[project]/app/Group/page.js",
-                                        lineNumber: 123,
+                                        lineNumber: 128,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/Group/page.js",
-                                lineNumber: 103,
+                                lineNumber: 108,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/app/Group/page.js",
-                            lineNumber: 102,
+                            lineNumber: 107,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
@@ -631,7 +639,7 @@ function GroupChat() {
                                         className: "flex-1 p-4 border rounded-lg focus:outline-none focus:border-purple-600 text-black bg-white shadow-md"
                                     }, void 0, false, {
                                         fileName: "[project]/app/Group/page.js",
-                                        lineNumber: 129,
+                                        lineNumber: 134,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].button, {
@@ -646,35 +654,35 @@ function GroupChat() {
                                         children: "Send"
                                     }, void 0, false, {
                                         fileName: "[project]/app/Group/page.js",
-                                        lineNumber: 137,
+                                        lineNumber: 142,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/Group/page.js",
-                                lineNumber: 128,
+                                lineNumber: 133,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/app/Group/page.js",
-                            lineNumber: 127,
+                            lineNumber: 132,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/Group/page.js",
-                    lineNumber: 92,
+                    lineNumber: 97,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/Group/page.js",
-                lineNumber: 91,
+                lineNumber: 96,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/Group/page.js",
-        lineNumber: 89,
+        lineNumber: 94,
         columnNumber: 5
     }, this);
 }

@@ -1,9 +1,10 @@
 'use client';
+
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect, useRef } from 'react';
 import { io } from 'socket.io-client';
 import Header from '../Header/page';
-import axios from 'axios'; 
+import axios from 'axios';
 
 export default function GroupChat() {
   const [messages, setMessages] = useState([]);
@@ -23,23 +24,26 @@ export default function GroupChat() {
   useEffect(() => {
     if (token) {
       socketRef.current = io('http://localhost:5000', {
-        query: { token },
+        query: { token }
       });
 
+      // Join the group chat with user details
       socketRef.current.emit('join', {
-        userId: 1,
-        username: 'You',
+        username: 'You', // Replace with actual username
         avatar: '😊'
       });
 
+      // Listen for previous messages when the user joins
       socketRef.current.on('previous-messages', (previousMessages) => {
         setMessages(previousMessages);
       });
 
+      // Listen for new messages
       socketRef.current.on('new-message', (message) => {
         setMessages(prev => [...prev, message]);
       });
 
+      // Handle user join and leave events
       socketRef.current.on('user-joined', ({ systemMessage, onlineCount }) => {
         setMessages(prev => [...prev, { id: Date.now(), text: systemMessage, isSystem: true }]);
         setOnlineCount(onlineCount);
@@ -64,9 +68,10 @@ export default function GroupChat() {
     e.preventDefault();
     if (!newMessage.trim()) return;
 
+    // Send new message to server
     socketRef.current.emit('send-message', {
-      userId: 1,
-      username: 'You',
+      userId: 1, // Replace with actual user ID
+      username: 'You', // Replace with actual username
       text: newMessage,
       avatar: '😊'
     });
@@ -135,7 +140,7 @@ export default function GroupChat() {
                 className="flex-1 p-4 border rounded-lg focus:outline-none focus:border-purple-600 text-black bg-white shadow-md"
               />
               <motion.button
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.05 }}  
                 whileTap={{ scale: 0.95 }}
                 type="submit"
                 className="bg-purple-600 text-white px-6 py-3 rounded-lg w-full sm:w-auto shadow-md"
