@@ -123,41 +123,28 @@ export default function GroupChat() {
                   transition={{ type: 'spring', stiffness: 300 }}
                   className={`flex items-start gap-3 mb-4 ${message.isSystem ? 'justify-center' : message.username === 'You' ? 'flex-row-reverse justify-end' : 'justify-start'}`}
                 >
-                  {!message.isSystem && (
-                    <div className="w-10 h-10 rounded-full flex items-center justify-center bg-white shadow-md">
-                      {message.avatar}
-                    </div>
-                  )}
-                  <div className={`p-4 rounded-lg shadow-lg max-w-[75%] ${message.isSystem ? 'bg-gray-200 text-gray-600 text-sm italic' : message.username === 'You' ? 'bg-purple-600 text-white' : 'bg-white text-black'}`}>
-                    {!message.isSystem && <p className="text-xs font-semibold mb-2">{message.username}</p>}
-                    <p className="text-sm">{message.text}</p>
+                  <div className="flex flex-col">
+                    <div className="text-sm text-white">{message.username}</div>
+                    <div className="text-sm bg-gray-800 text-white p-2 rounded-lg">{message.text}</div>
                   </div>
                 </motion.div>
               ))}
-              <div ref={messagesEndRef} />
             </AnimatePresence>
+            <div ref={messagesEndRef} />
           </div>
 
-          <form onSubmit={sendMessage} className="p-6 border-t bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 rounded-lg mt-4 shadow-lg">
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-5">
-              <motion.input
-                whileFocus={{ scale: 1.02 }}
+          <div className="flex items-center gap-2 p-4 bg-gray-800">
+            <form onSubmit={sendMessage} className="w-full flex items-center gap-3">
+              <input
                 type="text"
                 value={newMessage}
                 onChange={(e) => setNewMessage(e.target.value)}
+                className="w-full p-3 rounded-lg bg-white text-black"
                 placeholder="Type your message..."
-                className="flex-1 p-4 border rounded-lg focus:outline-none focus:border-purple-600 text-black bg-white shadow-md"
               />
-              <motion.button
-                whileHover={{ scale: 1.05 }}  
-                whileTap={{ scale: 0.95 }}
-                type="submit"
-                className="bg-purple-600 text-white px-6 py-3 rounded-lg w-full sm:w-auto shadow-md"
-              >
-                Send
-              </motion.button>
-            </div>
-          </form>
+              <button type="submit" className="text-white p-3 rounded-lg bg-gradient-to-r from-blue-500 via-teal-400 to-purple-500">Send</button>
+            </form>
+          </div>
         </motion.div>
       </div>
     </div>
