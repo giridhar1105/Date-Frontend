@@ -14,6 +14,7 @@ export default function GroupChat() {
   const socketRef = useRef(null);
   const messagesEndRef = useRef(null);
 
+  // Load the JWT token from localStorage
   useEffect(() => {
     const storedToken = localStorage.getItem('auth-token');
     if (storedToken) {
@@ -21,6 +22,7 @@ export default function GroupChat() {
     }
   }, []);
 
+  // Setup socket connection once token is available
   useEffect(() => {
     if (token) {
       socketRef.current = io('http://localhost:5000', {
@@ -56,10 +58,12 @@ export default function GroupChat() {
     }
   }, [token]);
 
+  // Scroll to bottom when new messages are added
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
+  // Send message to server
   const sendMessage = (e) => {
     e.preventDefault();
     if (!newMessage.trim()) return;
@@ -69,13 +73,12 @@ export default function GroupChat() {
       username: 'You',
       text: newMessage,
       avatar: '😊',
-      isTemp: true,  // Flag to identify the temporary message
+      isTemp: true,  // Temporary message flag
     };
 
-    setMessages(prev => [...prev, tempMessage]);  // Add temporary message for animation
+    setMessages(prev => [...prev, tempMessage]);
 
     socketRef.current.emit('send-message', {
-      userId: 1,
       username: 'You',
       text: newMessage,
       avatar: '😊'
@@ -84,6 +87,7 @@ export default function GroupChat() {
     setNewMessage('');
   };
 
+  // Handle login
   const handleLogin = async (email, password) => {
     try {
       const response = await axios.post('http://localhost:5000/login', { email, password });
@@ -116,7 +120,7 @@ export default function GroupChat() {
                   key={message.id}
                   initial={{
                     opacity: 0,
-                    x: 100,  // All messages slide in from the right (for both you and others)
+                    x: 100,
                   }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, scale: 0.95 }}

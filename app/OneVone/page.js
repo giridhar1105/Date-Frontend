@@ -98,7 +98,7 @@ export default function OneVoneChat() {
     return (
         <div className="flex flex-col h-screen">
             <Header />
-            <div className="flex flex-1 bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400">
+            <div className="flex flex-1 bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 pt-10">
                 <motion.div 
                     initial={{ x: -100, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
