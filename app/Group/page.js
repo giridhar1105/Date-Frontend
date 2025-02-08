@@ -1,123 +1,71 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState, useEffect, useRef } from 'react';
-import { io } from 'socket.io-client';
-import Header from '../Header/page';
-import axios from 'axios';
 
-export default function GroupChat() {
+const WebSocketClient = () => {
+  const [socket, setSocket] = useState(null);
+  const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
-  const [newMessage, setNewMessage] = useState('');
-  const [onlineCount, setOnlineCount] = useState(0);
-  const [token, setToken] = useState(null);
-  const socketRef = useRef(null);
-  const messagesEndRef = useRef(null);
 
-  // Load the JWT token from localStorage
   useEffect(() => {
-    const storedToken = localStorage.getItem('auth-token');
-    if (storedToken) {
-      setToken(storedToken);
-    }
-  }, []);
-
-  // Setup socket connection once token is available
-  useEffect(() => {
-    if (token) {
-      socketRef.current = io('http://localhost:5000', {
-        query: { token }
-      });
-
-      socketRef.current.emit('join', {
-        username: 'You',
-        avatar: '😊'
-      });
-
-      socketRef.current.on('previous-messages', (previousMessages) => {
-        setMessages(previousMessages);
-      });
-
-      socketRef.current.on('new-message', (message) => {
-        setMessages(prev => [...prev, message]);
-      });
-
-      socketRef.current.on('user-joined', ({ systemMessage, onlineCount }) => {
-        setMessages(prev => [...prev, { id: Date.now(), text: systemMessage, isSystem: true }]);
-        setOnlineCount(onlineCount);
-      });
-
-      socketRef.current.on('user-left', ({ systemMessage, onlineCount }) => {
-        setMessages(prev => [...prev, { id: Date.now(), text: systemMessage, isSystem: true }]);
-        setOnlineCount(onlineCount);
-      });
-
-      return () => {
-        socketRef.current.disconnect();
-      };
-    }
-  }, [token]);
-
-  // Scroll to bottom when new messages are added
-  useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [messages]);
-
-  // Send message to server
-  const sendMessage = (e) => {
-    e.preventDefault();
-    if (!newMessage.trim()) return;
-
-    const tempMessage = {
-      id: Date.now(),
-      username: 'You',
-      text: newMessage,
-      avatar: '😊',
-      isTemp: true,  // Temporary message flag
+    // Create WebSocket connection
+    const ws = new WebSocket('ws://localhost:8085');
+    
+    // Handle connection open event
+    ws.onopen = () => {
+      console.log('Connected to WebSocket server');
+      ws.send('Hello from the client!');
     };
 
-    setMessages(prev => [...prev, tempMessage]);
+    // Handle incoming messages from server
+    ws.onmessage = (event) => {
+      console.log('Message from server:', event.data);
+      setMessages((prevMessages) => [...prevMessages, event.data]);
+    };
 
-    socketRef.current.emit('send-message', {
-      username: 'You',
-      text: newMessage,
-      avatar: '😊'
-    });
+    // Handle WebSocket error event
+    ws.onerror = (event) => {
+      console.error('WebSocket error:', event);
+    };
 
-    setNewMessage('');
-  };
+    // Handle WebSocket close event
+    ws.onclose = () => {
+      console.log('Disconnected from WebSocket server');
+    };
 
-  // Handle login
-  const handleLogin = async (email, password) => {
-    try {
-      const response = await axios.post('http://localhost:5000/login', { email, password });
-      const { token } = response.data;
-      localStorage.setItem('auth-token', token);
-      setToken(token);
-    } catch (error) {
-      console.error('Login failed', error);
+    setSocket(ws);
+
+    // Clean up WebSocket connection when the component unmounts
+    return () => {
+      ws.close();
+    };
+  }, []);
+
+  const sendMessage = () => {
+    if (socket && socket.readyState === WebSocket.OPEN) {
+      socket.send(message);
+      setMessage('');
     }
   };
 
   return (
     <div className="h-screen bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 overflow-hidden">
-      <Header />
-      <div className="h-full flex flex-col">
+      <div className="h-full flex flex-col p-8 space-y-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="flex-1 flex flex-col p-8 space-y-6 overflow-hidden"
         >
           <div className="bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 p-7 text-white rounded-lg shadow-lg">
-            <h1 className="text-2xl font-semibold">Group Chat</h1>
-            <p className="text-sm">{onlineCount} participants online</p>
+            <h1 className="text-2xl font-semibold">WebSocket Client</h1>
           </div>
 
           <div className="flex-1 overflow-y-auto p-6 bg-gradient-to-b from-purple-600 via-pink-500 to-orange-400 rounded-lg shadow-lg">
             <AnimatePresence>
-              {messages.map((message) => (
+              {messages.map((msg, index) => (
                 <motion.div
-                  key={message.id}
+                  key={index}
                   initial={{
                     opacity: 0,
                     x: 100,
@@ -125,32 +73,33 @@ export default function GroupChat() {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ type: 'spring', stiffness: 300 }}
-                  className={`flex items-start gap-3 mb-4 ${message.isSystem ? 'justify-center' : message.username === 'You' ? 'flex-row-reverse justify-end' : 'justify-start'}`}
+                  className="flex items-start gap-3 mb-4 justify-start"
                 >
-                  <div className="flex flex-col">
-                    <div className="text-sm text-white">{message.username}</div>
-                    <div className="text-sm bg-gray-800 text-white p-2 rounded-lg">{message.text}</div>
-                  </div>
+                  <div className="text-sm bg-gray-800 text-white p-2 rounded-lg">{msg}</div>
                 </motion.div>
               ))}
             </AnimatePresence>
-            <div ref={messagesEndRef} />
           </div>
 
           <div className="flex items-center gap-2 p-4 bg-gray-800">
-            <form onSubmit={sendMessage} className="w-full flex items-center gap-3">
-              <input
-                type="text"
-                value={newMessage}
-                onChange={(e) => setNewMessage(e.target.value)}
-                className="w-full p-3 rounded-lg bg-white text-black"
-                placeholder="Type your message..."
-              />
-              <button type="submit" className="text-white p-3 rounded-lg bg-gradient-to-r from-blue-500 via-teal-400 to-purple-500">Send</button>
-            </form>
+            <input
+              type="text"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              className="w-full p-3 rounded-lg bg-white text-black"
+              placeholder="Type your message..."
+            />
+            <button
+              onClick={sendMessage}
+              className="text-white p-3 rounded-lg bg-gradient-to-r from-blue-500 via-teal-400 to-purple-500"
+            >
+              Send
+            </button>
           </div>
         </motion.div>
       </div>
     </div>
   );
-}
+};
+
+export default WebSocketClient;
